@@ -40,6 +40,10 @@
     line-height: 42px;
 }
 
+.authSubmitBtn:hover {
+    cursor: pointer;
+}
+
 .authFieldset input {
     width: 100%;
     box-sizing: border-box;

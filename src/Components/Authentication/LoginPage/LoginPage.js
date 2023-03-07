@@ -1,7 +1,6 @@
 import "./LoginPage.css"
 import "../Authentication.css"
 import { useReducer } from "react"
-import apiClient from "../../../services/apiClient"
 
 export default function LoginPage() {
 
@@ -11,7 +10,6 @@ export default function LoginPage() {
     /* HANDLER FUNCTIONS */
     function handleOnSubmit(event) {
         event.preventDefault()
-        apiClient.login("Test data")
     }
 
     function handleOnChange(event) {
