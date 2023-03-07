@@ -1,6 +1,5 @@
 import './SignUpPage.css'
 import "../Authentication.css"
-import { Button } from '../../../Accessories'
 import { useReducer } from "react"
 
 export default function SignUpPage() {
