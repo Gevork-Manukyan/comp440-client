@@ -1,0 +1,46 @@
+.authForm {
+    padding: 20px 98px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border: solid black 1px;
+    background-color: var(--form-background);
+    border-radius: var(--borderRadius);
+}
+
+.authFieldset {
+    width: 20vw;
+    margin: 20px 0px;
+    padding: 0px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.authFieldset .form-title {
+    margin-bottom: 0;
+}
+
+.form-title {
+    font-family: var(--text-font);
+}
+
+.authSubmitBtn {
+    width: 100%;
+    margin: 0px;
+    align-self: center;
+    
+    border-radius: var(--borderRadius);
+    background-color: var(--orangeButton);
+
+    color: var(--white);
+    font: var(--text-font);
+    font-weight: var(--text-bold);
+    line-height: 42px;
+}
+
+.authFieldset input {
+    width: 100%;
+    box-sizing: border-box;
+}

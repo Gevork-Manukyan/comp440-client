@@ -1,0 +1,17 @@
+.LoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--login-background);
+    flex-grow: 1;
+}
+
+.LoginPage .flex-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+#name-fields {
+    display: flex;
+}

@@ -1,0 +1,8 @@
+.SignUpPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--login-background);
+    flex-grow: 1;
+}
