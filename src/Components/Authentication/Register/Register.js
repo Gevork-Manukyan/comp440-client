@@ -1,8 +1,8 @@
-import './SignUpPage.css'
+import './Register.css'
 import "../Authentication.css"
 import { useReducer } from "react"
 
-export default function SignUpPage() {
+export default function Register() {
     
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
@@ -28,7 +28,7 @@ export default function SignUpPage() {
     }
     
     return (
-        <div className='SignUpPage'>
+        <div className='Register'>
              <form onSubmit={handleOnSubmit}>
                 <div className="authForm">
                     <fieldset className="authFieldset">
