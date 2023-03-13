@@ -1,4 +1,4 @@
-.Register {
+.RegisterPage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,4 +6,9 @@
 
     background-color: var(--login-background);
     flex-grow: 1;
+}
+
+.RegisterPage #name-area {
+    display: flex;
+    flex-direction: row;
 }
