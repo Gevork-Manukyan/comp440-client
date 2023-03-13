@@ -1,12 +1,13 @@
 import "./LoginPage.css"
 import "../Authentication.css"
-import { useReducer } from "react"
+import { useReducer, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function LoginPage() {
 
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
+    const [errorMessage, setErrorMessage] = useState("")
 
     /* HANDLER FUNCTIONS */
     function handleOnSubmit(event) {
@@ -45,6 +46,9 @@ export default function LoginPage() {
                             <input name="password" type={"password"} onChange={handleOnChange} />
                         </label>
                     </fieldset>
+                    <div className='error-message'>
+                        <p>{errorMessage}</p>
+                    </div>
                     <button className="authSubmitBtn" type="submit">Submit</button>
                 </div>
             </form>

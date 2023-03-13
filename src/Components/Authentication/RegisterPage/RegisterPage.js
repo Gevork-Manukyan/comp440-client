@@ -1,16 +1,26 @@
 import './RegisterPage.css'
 import "../Authentication.css"
-import { useReducer } from "react"
+import { useReducer, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function Register() {
     
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
+    const [errorMessage, setErrorMessage] = useState("")
 
     /* HANDLER FUNCTIONS */
     function handleOnSubmit(event) {
         event.preventDefault()
+
+        if (formData?.confirm_password !== formData?.password) {
+            console.log("FAIL REGISTER")
+            setErrorMessage("Passwords Don't Match")
+            return
+        }
+
+        console.log('SUCCESSFUL REGISTER')
+        setErrorMessage("")
     }
 
     function handleOnChange(event) {
@@ -67,9 +77,12 @@ export default function Register() {
                     <fieldset className="authFieldset">
                         <label>
                             <p id="signup-confirm-password-title" className="form-title">Confirm Password</p>
-                            <input name="confirm-password" type={"password"} onChange={handleOnChange} />
+                            <input name="confirm_password" type={"password"} onChange={handleOnChange} />
                         </label>
                     </fieldset>
+                    <div className='error-message'>
+                        <p>{errorMessage}</p>
+                    </div>
                     <button className="authSubmitBtn" type="submit">Submit</button>
                 </div>
             </form>
