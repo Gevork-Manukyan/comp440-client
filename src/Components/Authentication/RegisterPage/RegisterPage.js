@@ -2,6 +2,7 @@ import './RegisterPage.css'
 import "../Authentication.css"
 import { useReducer, useState } from "react"
 import { Link } from "react-router-dom"
+import apiClient from '../../../services/apiClient'
 
 export default function Register() {
     
@@ -10,7 +11,7 @@ export default function Register() {
     const [errorMessage, setErrorMessage] = useState("")
 
     /* HANDLER FUNCTIONS */
-    function handleOnSubmit(event) {
+    async function handleOnSubmit(event) {
         event.preventDefault()
 
         if (formData?.confirm_password !== formData?.password) {
@@ -20,6 +21,13 @@ export default function Register() {
         }
 
         console.log('SUCCESSFUL REGISTER')
+        const response = await apiClient.register({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            username: formData.username,
+            email: formData.email,
+            password: formData.password
+        })
         setErrorMessage("")
     }
 
