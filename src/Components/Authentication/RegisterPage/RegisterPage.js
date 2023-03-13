@@ -1,6 +1,7 @@
-import './Register.css'
+import './RegisterPage.css'
 import "../Authentication.css"
 import { useReducer } from "react"
+import { Link } from "react-router-dom"
 
 export default function Register() {
     
@@ -52,6 +53,11 @@ export default function Register() {
                     <button className="authSubmitBtn" type="submit">Submit</button>
                 </div>
             </form>
+            <div>
+                <Link to={"/login"}>
+                    <p>Have an account?</p>
+                </Link>
+            </div>
         </div>
     )
 }
