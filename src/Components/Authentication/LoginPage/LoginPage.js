@@ -1,6 +1,7 @@
 import "./LoginPage.css"
 import "../Authentication.css"
 import { useReducer } from "react"
+import { Link } from "react-router-dom"
 
 export default function LoginPage() {
 
@@ -47,6 +48,11 @@ export default function LoginPage() {
                     <button className="authSubmitBtn" type="submit">Submit</button>
                 </div>
             </form>
+            <div>
+                <Link to={"/"}>
+                    <p>Need an account?</p>
+                </Link>
+            </div>
         </div>
     )
 }
