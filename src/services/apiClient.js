@@ -26,11 +26,15 @@ class ApiClient {
     // Endpoints
 
     async login(userInfo) {
-        return await this.request( {endpoint: "user/login", method: "POST", data: userInfo } )
+        return await this.request( {endpoint: "user/login", method: "POST", data: userInfo} )
     }
 
     async register(userInfo) {
-        return await this.request( {endpoint: "user/register", method: "POST", data: userInfo } )
+        return await this.request( {endpoint: "user/register", method: "POST", data: userInfo} )
+    }
+
+    async initDB() {
+        return await this.request( {endpoint: "initDB", method: "GET", data: {}} )
     }
 }
 

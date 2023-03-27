@@ -14,6 +14,7 @@ export default function LoginPage() {
     async function handleOnSubmit(event) {
         event.preventDefault()
         const response = await apiClient.login(formData)
+        console.log(response)
         // const data = response.data
     }
 
@@ -39,8 +40,8 @@ export default function LoginPage() {
                 <div className="authForm">
                     <fieldset className="authFieldset">
                         <label>
-                            <p id="login-email-title" className="form-title">Email</p>
-                            <input name="email" type={"email"} onChange={handleOnChange} />
+                            <p id="login-username-title" className="form-title">Username</p>
+                            <input name="username" type={"username"} onChange={handleOnChange} />
                         </label>
                     </fieldset>
                     <fieldset className="authFieldset">
