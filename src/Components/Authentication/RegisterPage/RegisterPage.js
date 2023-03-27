@@ -20,7 +20,6 @@ export default function Register() {
             return
         }
 
-        console.log('SUCCESSFUL REGISTER')
         const response = await apiClient.register({
             firstName: formData.firstName,
             lastName: formData.lastName,
@@ -28,6 +27,7 @@ export default function Register() {
             email: formData.email,
             password: formData.password
         })
+        console.log(response)
         setErrorMessage("")
     }
 

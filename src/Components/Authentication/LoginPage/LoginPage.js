@@ -2,6 +2,7 @@ import "./LoginPage.css"
 import "../Authentication.css"
 import { useReducer, useState } from "react"
 import { Link } from "react-router-dom"
+import apiClient from "../../../services/apiClient"
 
 export default function LoginPage() {
 
@@ -10,8 +11,10 @@ export default function LoginPage() {
     const [errorMessage, setErrorMessage] = useState("")
 
     /* HANDLER FUNCTIONS */
-    function handleOnSubmit(event) {
+    async function handleOnSubmit(event) {
         event.preventDefault()
+        const response = await apiClient.login(formData)
+        // const data = response.data
     }
 
     function handleOnChange(event) {
