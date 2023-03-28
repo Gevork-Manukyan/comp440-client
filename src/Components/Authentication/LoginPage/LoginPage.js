@@ -1,7 +1,7 @@
 import "./LoginPage.css"
 import "../Authentication.css"
 import { useReducer, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import apiClient from "../../../services/apiClient"
 
 export default function LoginPage() {
@@ -9,12 +9,17 @@ export default function LoginPage() {
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
     const [errorMessage, setErrorMessage] = useState("")
+    const navigate = useNavigate()
 
     /* HANDLER FUNCTIONS */
     async function handleOnSubmit(event) {
         event.preventDefault()
         const response = await apiClient.login(formData)
         console.log(response)
+        if(response.data) {
+            navigate("/home")
+        }
+        setErrorMessage("Invalid Credentials")
         // const data = response.data
     }
 

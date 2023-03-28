@@ -1,7 +1,7 @@
 import './RegisterPage.css'
 import "../Authentication.css"
 import { useReducer, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import apiClient from '../../../services/apiClient'
 
 export default function Register() {
@@ -9,6 +9,7 @@ export default function Register() {
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
     const [errorMessage, setErrorMessage] = useState("")
+    const navigate = useNavigate()
 
     /* HANDLER FUNCTIONS */
     async function handleOnSubmit(event) {
@@ -29,6 +30,10 @@ export default function Register() {
         })
         console.log(response)
         setErrorMessage("")
+        if(response.data) {
+            navigate("/home")
+        }
+        setErrorMessage("Invalid Credentials")
     }
 
     function handleOnChange(event) {
@@ -53,13 +58,13 @@ export default function Register() {
                     <div id='name-area'>
                         <fieldset className="authFieldset">
                             <label>
-                                <p id="signup-firstName-title" className="form-title">First</p>
+                                <p id="signup-firstName-title" className="form-title">First Name</p>
                                 <input name="firstName" type={"firstName"} onChange={handleOnChange} />
                             </label>
                         </fieldset>
                         <fieldset className="authFieldset">
                             <label>
-                                <p id="signup-lastName-title" className="form-title">Last</p>
+                                <p id="signup-lastName-title" className="form-title">Last Name</p>
                                 <input name="lastName" type={"lastName"} onChange={handleOnChange} />
                             </label>
                         </fieldset>
