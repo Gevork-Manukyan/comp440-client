@@ -6,8 +6,33 @@ import Register from "../Authentication/RegisterPage/RegisterPage"
 import Home from "../Home/Home"
 import InitButton from '../InitButton/InitButton';
 import Navbar from '../Navbar/Navbar';
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/apiClient';
 
 function App() {
+
+  const [user, setUser] = useState();
+  const [errors, setErrors] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
+
+
+  useEffect(() => {
+    const fetchAuthedUser = async () => {
+      const { data, error } = await apiClient.fetchUserFromToken();
+      if (error) setErrors(error);
+      if (data?.user) setUser(data.user);
+      setAuthenticated(true);
+    };
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      apiClient.setToken(token);
+      fetchAuthedUser();
+    } else {
+      setAuthenticated(false);
+    }
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -16,9 +41,9 @@ function App() {
         <InitButton />
 
         <Routes>
-          <Route path='/InsertItem' ></Route>
-          <Route path="/register" element={<Register />} ></Route>
-          <Route path="/login" element={<LoginPage />} ></Route>
+          <Route path='/insertItem' ></Route>
+          <Route path="/register" element={<Register setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
+          <Route path="/login" element={<LoginPage setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/" element={<Home />} ></Route>
         </Routes>
       </BrowserRouter>

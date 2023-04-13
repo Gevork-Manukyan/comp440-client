@@ -3,6 +3,8 @@ import axios from "axios";
 class ApiClient {
     constructor(remoteHostUrl) {
         this.remoteHostUrl = remoteHostUrl
+        this.token = null
+        this.tokenName = "token"
     }
 
     // Utility Method
@@ -10,6 +12,9 @@ class ApiClient {
         const url = this.remoteHostUrl + "/" + endpoint
         const headers = {
             "Content-Type": "application/json"
+        }
+        if(this.token){
+            headers["Authorization"] = `Bearer ${this.token}`;
         }
 
         try {
@@ -23,7 +28,16 @@ class ApiClient {
         }
     }
 
+    setToken (token) {
+        this.token = token
+        localStorage.setItem(this.tokenName, this.token)
+    }
+
     // Endpoints
+
+    async fetchUserFromToken () {
+        return await this.request({ endpoint: "user/me", method: "GET" })
+    }
 
     async login(userInfo) {
         return await this.request( {endpoint: "user/login", method: "POST", data: userInfo} )
