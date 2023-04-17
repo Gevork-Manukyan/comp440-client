@@ -33,6 +33,10 @@ class ApiClient {
         localStorage.setItem(this.tokenName, this.token)
     }
 
+    removeToken(tokenName) {
+        localStorage.removeItem(tokenName)
+    }
+
     // Endpoints
 
     async fetchUserFromToken () {

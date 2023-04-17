@@ -69,7 +69,7 @@ export default function LoginPage({ setUser, setAuthenticated }) {
                 </div>
             </form>
             <div>
-                <Link to={"/"}>
+                <Link to={"/register"}>
                     <p>Need an account?</p>
                 </Link>
             </div>

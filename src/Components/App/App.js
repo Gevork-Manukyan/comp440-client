@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-        <Navbar />
+        <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <InitButton />
 
         <Routes>
