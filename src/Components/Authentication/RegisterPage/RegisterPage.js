@@ -53,6 +53,7 @@ export default function Register() {
     
     return (
         <div className='RegisterPage'>
+            <h1>Register</h1>
              <form onSubmit={handleOnSubmit}>
                 <div className="authForm">
                     <div id='name-area'>

@@ -1,0 +1,19 @@
+.InitButton button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: green;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .InitButton button:hover {
+    background-color: darkgreen;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  }
+  

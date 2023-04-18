@@ -2,6 +2,7 @@ import { useState } from "react"
 import apiClient from "../../services/apiClient"
 import "./InitButton.css"
 
+
 export default function InitButton () {
 
     const onInitilize = async () => {
@@ -10,7 +11,7 @@ export default function InitButton () {
 
     return (
         <div className="InitButton">
-            <button onClick={onInitilize}>Initilize Database</button>
+            <button onClick={onInitilize}>Initialize Database</button>
         </div>
     )
 }
