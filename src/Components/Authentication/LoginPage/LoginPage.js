@@ -4,7 +4,7 @@ import { useReducer, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import apiClient from "../../../services/apiClient"
 
-export default function LoginPage() {
+export default function LoginPage({ setUser, setAuthenticated }) {
 
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
@@ -14,13 +14,20 @@ export default function LoginPage() {
     /* HANDLER FUNCTIONS */
     async function handleOnSubmit(event) {
         event.preventDefault()
-        const response = await apiClient.login(formData)
-        console.log(response)
-        if(response.data) {
-            navigate("/home")
+
+        const { data, error } = await apiClient.login(formData);
+        
+        if (error) {
+            setErrorMessage(error);
         }
-        setErrorMessage("Invalid Credentials")
-        // const data = response.data
+        
+        if (data?.user) {
+            setUser(data.user);
+            setAuthenticated(true);
+            apiClient.setToken(data.token);
+            localStorage.setItem("token", data.token);
+            navigate("/");
+        }
     }
 
     function handleOnChange(event) {
@@ -63,7 +70,7 @@ export default function LoginPage() {
                 </div>
             </form>
             <div>
-                <Link to={"/"}>
+                <Link to={"/register"}>
                     <p>Need an account?</p>
                 </Link>
             </div>

@@ -4,7 +4,7 @@ import { useReducer, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import apiClient from '../../../services/apiClient'
 
-export default function Register() {
+export default function Register({ setUser, setAuthenticated }) {
     
     /* VARIABLES */
     const [formData, setFormData] = useReducer(formReducer, {})
@@ -16,24 +16,27 @@ export default function Register() {
         event.preventDefault()
 
         if (formData?.confirm_password !== formData?.password) {
-            console.log("FAIL REGISTER")
             setErrorMessage("Passwords Don't Match")
             return
         }
 
-        const response = await apiClient.register({
+        const { data, error } = await apiClient.register({
             firstName: formData.firstName,
             lastName: formData.lastName,
             username: formData.username,
             email: formData.email,
             password: formData.password
         })
-        console.log(response)
-        setErrorMessage("")
-        if(response.data) {
-            navigate("/home")
-        }
-        setErrorMessage("Invalid Credentials")
+
+        if (error) setErrorMessage(error);
+
+        if (data?.user) {
+            setUser(data.user);
+            setAuthenticated(true);
+            apiClient.setToken(data.token);
+            localStorage.setItem("token", data.token);
+            navigate("/");
+          }
     }
 
     function handleOnChange(event) {
