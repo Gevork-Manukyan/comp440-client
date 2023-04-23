@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import { useEffect, useState } from 'react';
 import apiClient from '../../services/apiClient';
 import SearchPage from '../SearchPage/SearchPage';
+import InsertItem from '../InsertItem/InsertItem';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path='/insertItem' ></Route>
+          <Route path='/InsertItem' element={<InsertItem />} ></Route>
           <Route path="/register" element={<Register setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/login" element={<LoginPage setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/" element={<Home />} ></Route>
