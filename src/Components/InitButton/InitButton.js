@@ -1,5 +1,6 @@
 import apiClient from "../../services/apiClient"
 import "./InitButton.css"
+import Button from '@mui/material/Button';
 
 
 export default function InitButton () {
@@ -10,7 +11,7 @@ export default function InitButton () {
 
     return (
         <div className="InitButton">
-            <button onClick={onInitilize}>Initialize Database</button>
+            <Button variant="contained" onClick={onInitilize}>Initialize Database</Button>
         </div>
     )
 }

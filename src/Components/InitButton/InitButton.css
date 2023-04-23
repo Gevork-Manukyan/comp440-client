@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .InitButton button {
     padding: 10px;
     background-color: green;
@@ -14,3 +15,12 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   }
   
+=======
+.InitButton {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  font: var(--text-font);
+}
+>>>>>>> Stashed changes
