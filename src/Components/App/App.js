@@ -37,8 +37,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-        <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        <InitButton />
+        <div className='flex-wrapper'>
+          <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <InitButton />
+        </div>
 
         <Routes>
           <Route path='/insertItem' ></Route>
