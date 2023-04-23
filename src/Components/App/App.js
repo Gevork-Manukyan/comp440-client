@@ -8,6 +8,7 @@ import InitButton from '../InitButton/InitButton';
 import Navbar from '../Navbar/Navbar';
 import { useEffect, useState } from 'react';
 import apiClient from '../../services/apiClient';
+import SearchPage from '../SearchPage/SearchPage';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/register" element={<Register setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/login" element={<LoginPage setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/" element={<Home />} ></Route>
+          <Route path="/search" element={<SearchPage />} ></Route>
         </Routes>
       </BrowserRouter>
     </div>

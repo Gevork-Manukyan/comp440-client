@@ -13,7 +13,7 @@ export default function Navbar({ authenticated, setAuthenticated }) {
             <nav className="navbar">
                 <div className='item-section logged-in-items'>
                     <div className="nav-item"><Link to="/">Insert Item</Link></div>
-                    <div className="nav-item"><Link to="/">Blank</Link></div>
+                    <div className="nav-item"><Link to="/search">Search</Link></div>
                     <div className="nav-item"><Link to="/">Blank</Link></div>
                 </div>
                 <div className='item-section auth-section'>
