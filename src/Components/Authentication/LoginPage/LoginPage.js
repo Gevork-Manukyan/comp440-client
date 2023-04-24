@@ -69,7 +69,7 @@ export default function LoginPage({ setUser, setAuthenticated }) {
                     <button className="authSubmitBtn" type="submit">Submit</button>
                 </div>
             </form>
-            <div>
+            <div className="sendTo-register">
                 <Link to={"/register"}>
                     <p>Need an account?</p>
                 </Link>

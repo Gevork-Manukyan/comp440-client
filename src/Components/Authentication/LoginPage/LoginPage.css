@@ -16,3 +16,8 @@
 #name-fields {
     display: flex;
 }
+
+.sendTo-register{
+    text-decoration: none;
+    color: black
+}

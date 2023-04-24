@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import apiClient from '../../services/apiClient';
 import SearchPage from '../SearchPage/SearchPage';
 import InsertItem from '../InsertItem/InsertItem';
+import Reviews from '../Reviews/Reviews';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/login" element={<LoginPage setUser={setUser} setAuthenticated={setAuthenticated} />} ></Route>
           <Route path="/" element={<Home />} ></Route>
           <Route path="/search" element={<SearchPage />} ></Route>
+          <Route path='/reviews' element={<Reviews />} ></Route>
         </Routes>
       </BrowserRouter>
     </div>
