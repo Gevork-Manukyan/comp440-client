@@ -52,7 +52,11 @@ class ApiClient {
     }
 
     async initDB() {
-        return await this.request( {endpoint: "initDB", method: "GET", data: {}} )
+        return await this.request( {endpoint: "db/initDB", method: "GET", data: {}} )
+    }
+
+    async searchItemCategory(category) {
+        return await this.request( {endpoint: "db/searchItemCategory", method: "GET", data: {category}} )
     }
 }
 
