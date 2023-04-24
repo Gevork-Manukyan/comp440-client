@@ -101,6 +101,7 @@ const SearchPage = () => {
         <thead className='Header'>
           <tr>
             <th>ID</th>
+            <th>Date Posted</th>
             <th>Title</th>
             <th>Description</th>
             <th>Category</th>
@@ -111,7 +112,8 @@ const SearchPage = () => {
         <tbody>
           {items?.map((item) => (
             <tr key={item.title}>
-                <td>{item.id}</td>
+              <td>{item.id}</td>
+              <td>{item.datePosted}</td>
               <td>{item.title}</td>
               <td>{item.description}</td>
               <td>{item.category}</td>
