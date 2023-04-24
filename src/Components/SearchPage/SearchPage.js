@@ -38,8 +38,6 @@ const SearchPage = () => {
     const fetchItems = async () => {
       try {
         const response = await apiClient.getAllItems()
-        // console.log("ITEMS: ", items)
-        // console.log("RESPONSE: ", response.data)
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -116,7 +114,7 @@ const SearchPage = () => {
               <td>{item.datePosted}</td>
               <td>{item.title}</td>
               <td>{item.description}</td>
-              <td>{item.category}</td>
+              <td>{item.categories}</td>
               <td>${item.price}</td>
               <td><button onClick={handleCount}>Review</button></td>
             </tr>
