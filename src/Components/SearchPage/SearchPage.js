@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './SearchPage.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -8,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal'
 import { FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import { TextField } from '@mui/material';
+import apiClient from '../../services/apiClient';
 
 
 const style = {
@@ -38,8 +37,9 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3003/items');
-        console.log('Items fetched:', response.data);
+        const response = await apiClient.getAllItems()
+        // console.log("ITEMS: ", items)
+        // console.log("RESPONSE: ", response.data)
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -53,11 +53,10 @@ const SearchPage = () => {
       try {
         let response;
         if (!search.trim()) {
-          response = await axios.get('http://localhost:3003/items');
+          response = await apiClient.getAllItems();
         } else {
-          response = await axios.get(`http://localhost:3003/items/search?category_startswith=${search}`);
+          response = await apiClient.searchItem(search);
         }
-        console.log('Search results:', response.data);
         setItems(response.data);
       } catch (error) {
         console.error('Error searching items:', error);
@@ -110,7 +109,7 @@ const SearchPage = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
+          {items?.map((item) => (
             <tr key={item.title}>
                 <td>{item.id}</td>
               <td>{item.title}</td>

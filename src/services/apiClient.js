@@ -58,6 +58,19 @@ class ApiClient {
     async searchItemCategory(category) {
         return await this.request( {endpoint: "db/searchItemCategory", method: "GET", data: {category}} )
     }
+
+    async getAllReviews() {
+        return await this.request( {endpoint: "review/allReviews", method: "GET", data: {}} )
+    }
+
+    async getAllItems() {
+        return await this.request( {endpoint: "items/allItems", method: "GET", data: {}} )
+    }
+
+    async searchItem(search) {
+        return await this.request( {endpoint: `items/search?category_startswith=${search}`, method: "GET", data: {}} )
+    }
+
 }
 
 export default new ApiClient("http://localhost:3003")

@@ -1,6 +1,6 @@
 import './Reviews.css'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../../services/apiClient';
 
 export default function Reviews() {
 
@@ -9,8 +9,7 @@ export default function Reviews() {
     useEffect(() => {
         const fetchItems = async () => {
           try {
-            const response = await axios.get('http://localhost:3003/reviews');
-            console.log('reviews fetched:', response.data);
+            const response = await apiClient.getAllReviews()
             setReviews(response.data);
           } catch (error) {
             console.error('Error fetching items:', error);
@@ -29,7 +28,7 @@ export default function Reviews() {
             </tr>
             </thead>
             <tbody>
-            {reviews.map((review) => (
+            {reviews?.map((review) => (
                 <tr key={review.rating}>
                 <td>{review.rating}</td>
                 <td>{review.reviewDescription}</td>
