@@ -26,7 +26,7 @@ const style = {
 
 const SearchPage = () => {
   const [items, setItems] = useState([]);
-  const [reviewCount, setReviewCount] = useState(0);
+  const [reviewCount, setReviewCount] = useState(1);
   const [rating, setRating] = useState('');
   const [reviewDescription, setReviewDescription] = useState('');
   const [search, setSearch] = useState('');
