@@ -63,6 +63,10 @@ class ApiClient {
         return await this.request( {endpoint: "review/allReviews", method: "GET", data: {}} )
     }
 
+    async getAllReviewsWithProductInfo() {
+        return await this.request( {endpoint: "review/allReviewsWithProductInfo", method: "GET", data: {}} )
+    }
+
     async getAllItems() {
         return await this.request( {endpoint: "items/allItems", method: "GET", data: {}} )
     }
