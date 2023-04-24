@@ -41,7 +41,7 @@ function App() {
 
         <div className='flex-wrapper'>
           <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          <InitButton />
+          {authenticated ? <></> : <InitButton />}
         </div>
 
         <Routes>
