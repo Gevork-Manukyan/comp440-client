@@ -104,7 +104,7 @@ export default function InsertItem(props) {
       </Modal>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
+          Item Successfully Added!
         </Alert>
       </Snackbar>
     </div>
