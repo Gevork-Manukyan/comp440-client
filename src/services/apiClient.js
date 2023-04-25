@@ -75,6 +75,10 @@ class ApiClient {
         return await this.request( {endpoint: `items/search?category_startswith=${search}`, method: "GET", data: {}} )
     }
 
+    async postItem(item) {
+        return await this.request( {endpoint: "items/postItem", method: "POST", data: item} )
+    }
+
 }
 
 export default new ApiClient("http://localhost:3003")

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import { TextField } from '@mui/material';
+import apiClient from "../../services/apiClient"
 
 const style = {
   position: 'absolute',
@@ -28,6 +29,42 @@ export default function InsertItem(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [titleInput, setTitleInput] = useState("")
+  const [descriptionInput, setDiscriptionInput] = useState("")
+  const [categoryInput, setCategoryInput] = useState("")
+  const [priceInput, setPriceInput] = useState(null)
+
+  const handleSubmit = () => {
+
+    if (!(titleInput instanceof String)) return
+    if (!(descriptionInput instanceof String)) return
+    if (!(categoryInput instanceof String)) return
+    if (!Number.isInteger(priceInput)) return
+
+    apiClient.postItem({
+      title: titleInput,
+      descriptionInput: descriptionInput,
+      categoryInput
+    })
+    
+    setTitleInput("")
+    setDiscriptionInput("")
+    setCategoryInput("")
+    setPriceInput(null)
+  }
+
+  const handlePriceChange = (e) => {
+    const input = e.target.value
+
+    try {
+      const input_num = Number(input)
+      setPriceInput(input_num)
+    } 
+    catch {
+      setPriceInput(input)
+    }
+  }
+
   return (
     <div>
       <Button className="Insert-Button" onClick={handleOpen} variant='contained'>Insert Item</Button>
@@ -42,15 +79,15 @@ export default function InsertItem(props) {
                 Please enter Product Information:
             </Typography>
             <Box height={10} />
-            <TextField id= "TextField" label="Title" />
+            <TextField id= "TextField" label="Title" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
             <Box height={10} />
-            <TextField id= "TextField" label="Description" />
+            <TextField id= "TextField" label="Description" value={descriptionInput} onChange={(e) => setDiscriptionInput(e.target.value)} />
             <Box height={10} />
-            <TextField id= "TextField" label="Category" />
+            <TextField id= "TextField" label="Category" value={categoryInput} onChange={(e) => setCategoryInput(e.target.value)} />
             <Box height={10} />
-            <TextField id= "TextField" label="Price" />
+            <TextField id= "TextField" label="Price" value={priceInput} onChange={handlePriceChange} />
             <Box height={10} />
-            <Button variant='contained'>Submit</Button>
+            <Button variant='contained' onClick={handleSubmit}>Submit</Button>
         </Box>
       </Modal>
     </div>
