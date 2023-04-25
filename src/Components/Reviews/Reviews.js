@@ -9,7 +9,7 @@ export default function Reviews() {
     useEffect(() => {
         const fetchItems = async () => {
           try {
-            const response = await apiClient.getAllReviewsWithProductInfo()
+            const response = await apiClient.getReviewsWithDetails()
             setReviews(response.data);
           } catch (error) {
             console.error('Error fetching items:', error);
@@ -23,6 +23,8 @@ export default function Reviews() {
             <table className="styled-table">
             <thead className='Header'>
             <tr>
+                <th>Number</th>
+                <th>User</th>
                 <th>Item</th>
                 <th>Price</th>
                 <th>Rating</th>
@@ -32,8 +34,10 @@ export default function Reviews() {
             <tbody>
             {reviews?.map((review) => (
                 <tr key={review.rating}>
-                <td>{review.item.title}</td>
-                <td>${review.item.price}</td>
+                <td>{review.reviewId}</td>
+                <td>{review.username}</td>
+                <td>{review.title}</td>
+                <td>${review.price}</td>
                 <td>{review.rating}</td>
                 <td>{review.reviewDescription}</td>
                 </tr>
@@ -43,4 +47,3 @@ export default function Reviews() {
         </div>
     )
 }
-
