@@ -88,9 +88,17 @@ const SearchPage = () => {
     }
   }
 
-  function handleReset(e) {
+  function handleReset() {
     setSearch('');
+    apiClient.getAllItems()
+      .then(response => {
+        setItems(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
+  
   
 
   return (
