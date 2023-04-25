@@ -32,25 +32,29 @@ export default function InsertItem(props) {
   const [titleInput, setTitleInput] = useState("")
   const [descriptionInput, setDiscriptionInput] = useState("")
   const [categoryInput, setCategoryInput] = useState("")
-  const [priceInput, setPriceInput] = useState(null)
+  const [priceInput, setPriceInput] = useState("")
 
   const handleSubmit = () => {
 
-    if (!(titleInput instanceof String)) return
-    if (!(descriptionInput instanceof String)) return
-    if (!(categoryInput instanceof String)) return
+    // Check inputs
     if (!Number.isInteger(priceInput)) return
 
+    const categories_array = categoryInput.split(",")
+    categories_array.forEach(e => e.trim())
+
+    // Post item to DB
     apiClient.postItem({
       title: titleInput,
-      descriptionInput: descriptionInput,
-      categoryInput
+      description: descriptionInput,
+      category: categories_array,
+      price: priceInput
     })
     
+    // Reset Inputs
     setTitleInput("")
     setDiscriptionInput("")
     setCategoryInput("")
-    setPriceInput(null)
+    setPriceInput("")
   }
 
   const handlePriceChange = (e) => {
