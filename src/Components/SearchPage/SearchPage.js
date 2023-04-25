@@ -46,8 +46,10 @@ const SearchPage = () => {
         console.error('Error fetching items:', error);
       }
     };
+
+    console.log(items)
     fetchItems();
-  }, []);
+  }, [items]);
 
   useEffect(() => {
     if (isSearchSubmitted) {
@@ -78,6 +80,9 @@ const SearchPage = () => {
       itemId: currentItem.id
     })
 
+    setRating('')
+    setReviewDescription('')
+    handleClose()
   }
 
   function handleReviewClick(item) {

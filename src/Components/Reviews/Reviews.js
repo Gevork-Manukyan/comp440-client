@@ -34,7 +34,7 @@ export default function Reviews() {
             </thead>
             <tbody>
             {reviews?.map((review) => (
-                <tr key={review.rating}>
+                <tr key={review.reviewId}>
                 <td>{review.reviewId}</td>
                 <td>{review.username}</td>
                 <td>{review.title}</td>
