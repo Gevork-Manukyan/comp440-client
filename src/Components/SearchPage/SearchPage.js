@@ -47,9 +47,8 @@ const SearchPage = () => {
       }
     };
 
-    console.log(items)
     fetchItems();
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     if (isSearchSubmitted) {
