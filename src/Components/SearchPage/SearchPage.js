@@ -26,6 +26,7 @@ const style = {
 
 const SearchPage = () => {
   const [items, setItems] = useState([]);
+  const [currentItem, setCurrentItem] = useState()
   const [reviewCount, setReviewCount] = useState(1);
   const [rating, setRating] = useState('');
   const [reviewDescription, setReviewDescription] = useState('');
@@ -69,16 +70,17 @@ const SearchPage = () => {
   }, [search, isSearchSubmitted]);
   
 
-  function handleSubmit(event) {
-    const data = {
-      rating: rating,
-      reviewDescription: reviewDescription
-    }
+  function handleSubmit() {
 
-    console.log(data);
+    apiClient.postReview({
+      rating: rating,
+      reviewDescription: reviewDescription,
+      itemId: currentItem.id
+    })
+
   }
 
-  function handleCount() {
+  function handleReviewClick(item) {
     if (reviewCount > 3) {
       alert('You have already submitted 3 reviews.');
       return;
@@ -86,6 +88,8 @@ const SearchPage = () => {
       setReviewCount(reviewCount + 1);
       handleOpen();
     }
+
+    setCurrentItem(item)
   }
 
   function handleReset() {
@@ -146,7 +150,7 @@ const SearchPage = () => {
         </thead>
         <tbody>
           {items?.map((item) => (
-            <tr key={item.title}>
+            <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.userUsername}</td>
               <td>{item.datePosted}</td>
@@ -154,7 +158,7 @@ const SearchPage = () => {
               <td>{item.description}</td>
               <td>{item.categories}</td>
               <td>${item.price}</td>
-              <td><button onClick={handleCount}>Review</button></td>
+              <td><button onClick={() => handleReviewClick(item)}>Review</button></td>
             </tr>
           ))}
         </tbody>
