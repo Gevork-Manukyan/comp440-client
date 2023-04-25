@@ -33,6 +33,8 @@ const SearchPage = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
+
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -47,21 +49,25 @@ const SearchPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchFilteredItems = async () => {
-      try {
-        let response;
-        if (!search.trim()) {
-          response = await apiClient.getAllItems();
-        } else {
-          response = await apiClient.searchItem(search);
+    if (isSearchSubmitted) {
+      const fetchFilteredItems = async () => {
+        try {
+          let response;
+          if (!search.trim()) {
+            response = await apiClient.getAllItems();
+          } else {
+            response = await apiClient.searchItem(search);
+          }
+          setItems(response.data);
+        } catch (error) {
+          console.error('Error searching items:', error);
         }
-        setItems(response.data);
-      } catch (error) {
-        console.error('Error searching items:', error);
-      }
-    };
-    fetchFilteredItems();
-  }, [search]);
+      };
+      fetchFilteredItems();
+      setIsSearchSubmitted(false);
+    }
+  }, [search, isSearchSubmitted]);
+  
 
   function handleSubmit(event) {
     const data = {
@@ -81,11 +87,15 @@ const SearchPage = () => {
       handleOpen();
     }
   }
+
+  function handleReset(e) {
+    setSearch('');
+  }
   
 
   return (
     <div className='Search'>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => { e.preventDefault(); setIsSearchSubmitted(true); }}>
         <input
           className='Search-input'
           placeholder='Search by category'
@@ -94,6 +104,24 @@ const SearchPage = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <Button
+          className='Form-Button'
+          variant='contained' 
+          type="submit" 
+          size='small'
+          >
+            Search
+          </Button>
+        <Button 
+          className='Form-Button'
+          variant='contained' 
+          color="error" 
+          type="reset" 
+          size='small'
+          onClick={handleReset}
+          >
+            Reset
+          </Button>
       </form>
       <table className="styled-table">
         <thead className='Header'>

@@ -10,6 +10,11 @@
 
 .Search-input {
     width: 25vw;
+    height: 3vh;
+}
+
+.Form-Button {
+    margin-left: 5px;
 }
 
 .styled-table thead tr {
