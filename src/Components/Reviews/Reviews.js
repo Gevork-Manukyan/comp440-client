@@ -15,6 +15,7 @@ export default function Reviews() {
             console.error('Error fetching items:', error);
           }
         };
+
         fetchItems();
       }, []);
 
@@ -39,7 +40,7 @@ export default function Reviews() {
                 <td>{review.title}</td>
                 <td>${review.price}</td>
                 <td>{review.rating}</td>
-                <td>{review.reviewDescription}</td>
+                <td>{review.description}</td>
                 </tr>
             ))}
             </tbody>
