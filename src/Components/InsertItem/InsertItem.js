@@ -6,6 +6,13 @@ import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import { TextField } from '@mui/material';
 import apiClient from "../../services/apiClient"
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import Stack from '@mui/material/Stack';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const style = {
   position: 'absolute',
@@ -23,8 +30,9 @@ const style = {
 };
 
 export default function InsertItem(props) {
-    
+
   const [open, setOpen] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const {children, ...rest} = props;
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -55,7 +63,18 @@ export default function InsertItem(props) {
     setDiscriptionInput("")
     setCategoryInput("")
     setPriceInput("")
+    handleClose()
+    handleSnackbarOpen()
+
   }
+
+  const handleSnackbarOpen = () => setSnackbarOpen(true);
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
 
   return (
@@ -83,6 +102,11 @@ export default function InsertItem(props) {
             <Button variant='contained' onClick={handleSubmit}>Submit</Button>
         </Box>
       </Modal>
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
