@@ -37,7 +37,7 @@ export default function InsertItem(props) {
   const handleSubmit = () => {
 
     // Check inputs
-    if (!Number.isInteger(priceInput)) return
+    if (!Number.isFinite(Number(priceInput))) return
 
     const categories_array = categoryInput.split(",")
     categories_array.forEach(e => e.trim())
@@ -47,7 +47,7 @@ export default function InsertItem(props) {
       title: titleInput,
       description: descriptionInput,
       category: categories_array,
-      price: priceInput
+      price: Number(priceInput)
     })
     
     // Reset Inputs
@@ -57,17 +57,6 @@ export default function InsertItem(props) {
     setPriceInput("")
   }
 
-  const handlePriceChange = (e) => {
-    const input = e.target.value
-
-    try {
-      const input_num = Number(input)
-      setPriceInput(input_num)
-    } 
-    catch {
-      setPriceInput(input)
-    }
-  }
 
   return (
     <div>
@@ -89,7 +78,7 @@ export default function InsertItem(props) {
             <Box height={10} />
             <TextField id= "TextField" label="Category" value={categoryInput} onChange={(e) => setCategoryInput(e.target.value)} />
             <Box height={10} />
-            <TextField id= "TextField" label="Price" value={priceInput} onChange={handlePriceChange} />
+            <TextField id= "TextField" label="Price" value={priceInput} onChange={(e) => setPriceInput(e.target.value)} />
             <Box height={10} />
             <Button variant='contained' onClick={handleSubmit}>Submit</Button>
         </Box>
