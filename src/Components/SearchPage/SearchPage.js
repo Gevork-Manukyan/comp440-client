@@ -32,9 +32,9 @@ const SearchPage = () => {
   const [reviewDescription, setReviewDescription] = useState('');
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
 
 
   useEffect(() => {
@@ -70,14 +70,23 @@ const SearchPage = () => {
     }
   }, [search, isSearchSubmitted]);
   
+  const handleOpen = () => {
+    setOpen(true)
+    setErrorMessage("")
+  };
 
-  function handleSubmit() {
+  async function handleSubmit() {
 
-    apiClient.postReview({
+    const result = await apiClient.postReview({
       rating: rating,
       reviewDescription: reviewDescription,
       itemId: currentItem.id
     })
+
+    if (result.data === null && result.error !== null) {
+      setErrorMessage(result.error)
+      return
+    }
 
     setRating('')
     setReviewDescription('')
@@ -200,6 +209,9 @@ const SearchPage = () => {
               onChange={(e) => setReviewDescription(e.target.value)} />
             <Box height={10} />
             <Button variant='contained' onClick={handleSubmit}>Submit</Button>
+            <Typography className='error-message'>
+              {errorMessage}
+            </Typography>
         </Box>
       </Modal>
     </div>
