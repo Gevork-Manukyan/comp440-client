@@ -27,7 +27,6 @@ const style = {
 const SearchPage = () => {
   const [items, setItems] = useState([]);
   const [currentItem, setCurrentItem] = useState()
-  const [reviewCount, setReviewCount] = useState(1);
   const [rating, setRating] = useState('');
   const [reviewDescription, setReviewDescription] = useState('');
   const [search, setSearch] = useState('');
@@ -94,14 +93,7 @@ const SearchPage = () => {
   }
 
   function handleReviewClick(item) {
-    if (reviewCount > 3) {
-      alert('You have already submitted 3 reviews.');
-      return;
-    } else {
-      setReviewCount(reviewCount + 1);
-      handleOpen();
-    }
-
+    handleOpen()
     setCurrentItem(item)
   }
 
