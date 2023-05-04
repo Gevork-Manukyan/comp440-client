@@ -52,7 +52,7 @@ class ApiClient {
     }
 
     async initDB() {
-        return await this.request( {endpoint: "db/initDB", method: "GET", data: {}} )
+        return await this.request( {endpoint: "db/initDB", method: "GET"} )
     }
 
     async searchItemCategory(category) {
@@ -60,11 +60,11 @@ class ApiClient {
     }
 
     async getAllReviews() {
-        return await this.request( {endpoint: "review/allReviews", method: "GET", data: {}} )
+        return await this.request( {endpoint: "review/allReviews", method: "GET"} )
     }
 
     async getReviewsWithDetails() {
-        return await this.request( {endpoint: "review/getReviewsWithDetails", method: "GET", data: {}} )
+        return await this.request( {endpoint: "review/getReviewsWithDetails", method: "GET"} )
     }
 
     async postReview(review) {
@@ -72,17 +72,68 @@ class ApiClient {
     }
 
     async getAllItems() {
-        return await this.request( {endpoint: "items/allItems", method: "GET", data: {}} )
+        return await this.request( {endpoint: "items/allItems", method: "GET"} )
     }
 
     async searchItem(search) {
-        return await this.request( {endpoint: `items/search?category_startswith=${search}`, method: "GET", data: {}} )
+        return await this.request( {endpoint: `items/search?category_startswith=${search}`, method: "GET"} )
     }
 
     async postItem(item) {
         return await this.request( {endpoint: "items/postItem", method: "POST", data: item} )
     }
 
+    // PART 3
+
+    // 1
+    async getExpensiveItemsByCategory() {
+        return await this.request( {endpoint: `items/getExpensiveItemsByCategory`, method: "GET"} )
+    }
+
+    // 2
+    async getTwoItemsDiffCategorySameDay() {
+        return await this.request( {endpoint: "user/getTwoItemsDiffCategorySameDay", method: "GET"} )
+    }
+
+    // 3
+    async getExcellentGoodItemsForUser(username) {
+        return await this.request( {endpoint: "user/getExcellentGoodItemsForUser", method: "GET", data: {username}} )
+    } 
+
+    // 4
+    async getPopularUsers() {
+        return await this.request( {endpoint: "user/getPopularUsers", method: "GET"} )
+    }
+
+    // 5
+    async getSameFriends(user1, user2) {
+        return await this.request( {endpoint: "user/getSameFriends", method: "GET", data: {user1, user2}} )
+    }
+
+    // 6
+    async getNotExcellentUsers() {
+        return await this.request( {endpoint: "user/getNotExcellentUsers", method: "GET"} )
+    }
+
+    // 7
+    async getNiceReviewers() {
+        return await this.request( {endpoint: "user/getNiceReviewers", method: "GET"} )
+    }
+
+    // 8
+    async getMeanReviewers() {
+        return await this.request( {endpoint: "user/getMeanReviewers", method: "GET"} )
+    }
+
+    // 9 
+    async getGoodProducers() {
+        return await this.request( {endpoint: "user/getGoodProducers", method: "GET"} )
+    }
+
+    // 10
+    async getFriendUsers() {
+        return await this.request( {endpoint: "user/getFriendUsers", method: "GET"} )
+    }
 }
 
 export default new ApiClient("http://localhost:3003")
