@@ -8,7 +8,6 @@ import { TextField } from '@mui/material';
 import apiClient from "../../services/apiClient"
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import Stack from '@mui/material/Stack';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -33,16 +32,19 @@ export default function InsertItem(props) {
 
   const [open, setOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const {children, ...rest} = props;
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true)
+    setErrorMessage("")
+  };
 
   const [titleInput, setTitleInput] = useState("")
   const [descriptionInput, setDiscriptionInput] = useState("")
   const [categoryInput, setCategoryInput] = useState("")
   const [priceInput, setPriceInput] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const handleSubmit = () => {
+  async function handleSubmit() {
 
     // Check inputs
     if (!Number.isFinite(Number(priceInput))) return
@@ -51,12 +53,17 @@ export default function InsertItem(props) {
     categories_array.forEach(e => e.trim())
 
     // Post item to DB
-    apiClient.postItem({
+    const result = await apiClient.postItem({
       title: titleInput,
       description: descriptionInput,
       category: categories_array,
       price: Number(priceInput)
     })
+
+    if (result.error !== null) {
+      setErrorMessage(result.error)
+      return
+    }
     
     // Reset Inputs
     setTitleInput("")
@@ -100,6 +107,9 @@ export default function InsertItem(props) {
             <TextField id= "TextField" label="Price" value={priceInput} onChange={(e) => setPriceInput(e.target.value)} />
             <Box height={10} />
             <Button variant='contained' onClick={handleSubmit}>Submit</Button>
+            <Typography className='error-message'>
+              {errorMessage}
+            </Typography>
         </Box>
       </Modal>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
