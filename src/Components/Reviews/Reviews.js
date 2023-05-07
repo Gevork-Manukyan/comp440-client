@@ -22,28 +22,28 @@ export default function Reviews() {
     return (
         <div className='Reviews'>
             <table className="styled-table">
-            <thead className='Header'>
-            <tr>
-                <th>Number</th>
-                <th>User</th>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th>Review Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            {reviews?.map((review) => (
-                <tr key={review.reviewId}>
-                <td>{review.reviewId}</td>
-                <td>{review.username}</td>
-                <td>{review.title}</td>
-                <td>${review.price}</td>
-                <td>{review.rating}</td>
-                <td>{review.description}</td>
+              <thead className='Header'>
+                <tr>
+                    <th>Number</th>
+                    <th>User</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Review Description</th>
                 </tr>
-            ))}
-            </tbody>
+              </thead>
+              <tbody>
+              {reviews?.map((review) => (
+                  <tr key={review.reviewId}>
+                  <td>{review.reviewId}</td>
+                  <td>{review.username}</td>
+                  <td>{review.title}</td>
+                  <td>${review.price}</td>
+                  <td>{review.rating}</td>
+                  <td>{review.description}</td>
+                  </tr>
+              ))}
+              </tbody>
             </table>
         </div>
     )
