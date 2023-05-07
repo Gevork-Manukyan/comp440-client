@@ -6,6 +6,7 @@
     background-color: #333;
     color: #fff;
     padding: 10px;
+    height: 30px;
   }
 
   .item-section {
@@ -15,11 +16,74 @@
   
   .nav-item {
     margin: 0 10px;
-    margin-right: 50px;
+    margin-bottom: 25px;
   }
   
   .nav-item a {
     color: #fff;
     text-decoration: none;
   }
+
+  .nav-item a:hover {
+    color: rgb(17, 180, 235);
+  }
+
+
   
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    /* left: 36px;
+    top: 36px; */
+  }
+  
+  .bm-burger-bars {
+    background: #fff;
+  }
+  
+  .bm-burger-bars-hover {
+    background: #a90000;
+  }
+  
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  .bm-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+    overflow: hidden!important;
+  }
+  
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+  }
+  
+  .bm-item {
+    display: inline-block;
+  }
+  
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .hidden {
+    visibility: hidden;
+  }
