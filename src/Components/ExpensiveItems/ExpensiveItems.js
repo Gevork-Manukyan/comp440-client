@@ -4,7 +4,7 @@ import apiClient from "../../services/apiClient"
 
 export default function ExpensiveItems() {
 
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {

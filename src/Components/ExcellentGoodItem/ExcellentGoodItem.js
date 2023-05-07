@@ -28,24 +28,24 @@ export default function ExcellentGoodItem() {
 
             <div className="table-wrapper">
                 <table className="styled-table">
-                <thead className='Header'>
-                    <tr>
-                        <th>User</th>
-                        <th>Item</th>
-                        <th>description</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {data?.map((item) => (
-                    <tr key={item.id}>
-                    <td>{item.userUsername}</td>
-                    <td>{item.title}</td>
-                    <td>{item.description}</td>
-                    <td>${item.price}</td>
-                    </tr>
-                ))}
-                </tbody>
+                    <thead className='Header'>
+                        <tr>
+                            <th>User</th>
+                            <th>Item</th>
+                            <th>description</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {data?.map((item) => (
+                        <tr key={item.id}>
+                        <td>{item.userUsername}</td>
+                        <td>{item.title}</td>
+                        <td>{item.description}</td>
+                        <td>${item.price}</td>
+                        </tr>
+                    ))}
+                    </tbody>
                 </table>
             </div>
         </div>

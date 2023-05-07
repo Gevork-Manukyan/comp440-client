@@ -43,6 +43,10 @@ class ApiClient {
         return await this.request({ endpoint: "user/me", method: "GET" })
     }
 
+    async getAllUsers () {
+        return await this.request( {endpoint: "user/getAllUsers", method: "GET"} )
+    }
+
     async login(userInfo) {
         return await this.request( {endpoint: "user/login", method: "POST", data: userInfo} )
     }
@@ -107,7 +111,7 @@ class ApiClient {
 
     // 5
     async getSameFriends(user1, user2) {
-        return await this.request( {endpoint: "user/getSameFriends", method: "GET", data: {user1, user2}} )
+        return await this.request( {endpoint: "user/getSameFriends", method: "POST", data: {user1, user2}} )
     }
 
     // 6
