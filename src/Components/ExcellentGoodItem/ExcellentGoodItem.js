@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import apiClient from "../../services/apiClient"
 
 
@@ -8,10 +8,8 @@ export default function ExcellentGoodItem() {
     const [inputValue, setInputValue] = useState("")
 
     const handleSubmit = async () => {
-        // const res = await apiClient.getExcellentGoodItemsForUser(inputValue)
-        const res = await apiClient.getExcellentGoodItemsForUser("BillyDoe123")
+        const res = await apiClient.getExcellentGoodItemsForUser(inputValue)
         setData(res.data)
-        console.log(res.data)
     }
 
     const handleInputChange = (event) => {
@@ -29,24 +27,26 @@ export default function ExcellentGoodItem() {
             </div>
 
             <div className="table-wrapper">
-                {/* <table className="styled-table">
+                <table className="styled-table">
                 <thead className='Header'>
                     <tr>
-                        <th>Category</th>
+                        <th>User</th>
                         <th>Item</th>
+                        <th>description</th>
                         <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
-                {data?.map((item, index) => (
-                    <tr key={index}>
-                    <td>{item.category}</td>
-                    <td>{item.item}</td>
+                {data?.map((item) => (
+                    <tr key={item.id}>
+                    <td>{item.userUsername}</td>
+                    <td>{item.title}</td>
+                    <td>{item.description}</td>
                     <td>${item.price}</td>
                     </tr>
                 ))}
                 </tbody>
-                </table> */}
+                </table>
             </div>
         </div>
     )
