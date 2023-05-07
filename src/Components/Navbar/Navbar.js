@@ -19,16 +19,16 @@ export default function Navbar({ authenticated, setAuthenticated }) {
                         <div className="nav-item"><Link to="/search">Search</Link></div>
                         <div className="nav-item"><Link to="/reviews">Reviews</Link></div>
                         
-                        <div className="nav-item"><Link to="/reviews">Expensive Items</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Two Items Same Day</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Excellent/Good Item</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Popular User</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Same Friends</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Not Excellent User</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Nice Reviewers</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Mean Reviewers</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Good Producers</Link></div>
-                        <div className="nav-item"><Link to="/reviews">Friend Users</Link></div>
+                        <div className="nav-item"><Link to="/expensiveItems">Expensive Items</Link></div>
+                        <div className="nav-item"><Link to="/twoItemsSameDay">Two Items Same Day</Link></div>
+                        <div className="nav-item"><Link to="/excellentGoodItem">Excellent/Good Item</Link></div>
+                        <div className="nav-item"><Link to="/popularUser">Popular User</Link></div>
+                        <div className="nav-item"><Link to="/sameFriend">Same Friends</Link></div>
+                        <div className="nav-item"><Link to="/notExcellentUser">Not Excellent User</Link></div>
+                        <div className="nav-item"><Link to="/niceReviewers">Nice Reviewers</Link></div>
+                        <div className="nav-item"><Link to="/meanReviewers">Mean Reviewers</Link></div>
+                        <div className="nav-item"><Link to="/goodProducers">Good Producers</Link></div>
+                        <div className="nav-item"><Link to="/friendUsers">Friend Users</Link></div>
                     </Menu>
 
                 </div>
