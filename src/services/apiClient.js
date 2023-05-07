@@ -97,7 +97,7 @@ class ApiClient {
 
     // 3
     async getExcellentGoodItemsForUser(username) {
-        return await this.request( {endpoint: "user/getExcellentGoodItemsForUser", method: "GET", data: {username}} )
+        return await this.request( {endpoint: `user/getExcellentGoodItemsForUser/${username}`, method: "GET"} )
     } 
 
     // 4
