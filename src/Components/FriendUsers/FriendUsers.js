@@ -27,8 +27,8 @@ export default function FriendUsers() {
               <tbody>
               {data?.map((item, index) => (
                   <tr key={index}>
-                  <td>{item.user1}</td>
-                  <td>{item.user2}</td>
+                  <td>{item.User1}</td>
+                  <td>{item.User2}</td>
                   </tr>
               ))}
               </tbody>
