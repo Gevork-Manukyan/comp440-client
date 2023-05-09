@@ -25,7 +25,7 @@ import FriendUsers from '../FriendUsers/FriendUsers';
 
 function App() {
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("");
   const [errors, setErrors] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -52,7 +52,7 @@ function App() {
       <BrowserRouter>
 
         <div className='flex-wrapper'>
-          <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <Navbar authenticated={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} user={user} />
           {authenticated ? <></> : <InitButton />}
         </div>
 

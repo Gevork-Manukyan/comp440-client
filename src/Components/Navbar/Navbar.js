@@ -4,10 +4,11 @@ import apiClient from '../../services/apiClient'
 import { slide as Menu } from 'react-burger-menu'
 
 
-export default function Navbar({ authenticated, setAuthenticated }) {
+export default function Navbar({ authenticated, setAuthenticated, setUser, user }) {
     const handleLogout = () => {
         apiClient.removeToken("token")
         setAuthenticated(false)
+        setUser("")
     }
 
     return (
@@ -31,6 +32,9 @@ export default function Navbar({ authenticated, setAuthenticated }) {
                         <div className="nav-item"><Link to="/friendUsers">Friend Users</Link></div>
                     </Menu>
 
+                </div>
+                <div id='username'>
+                    {user?.username}
                 </div>
                 <div className='item-section auth-section'>
                     {authenticated ? 
