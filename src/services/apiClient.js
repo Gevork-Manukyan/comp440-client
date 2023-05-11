@@ -95,8 +95,8 @@ class ApiClient {
     }
 
     // 2
-    async getTwoItemsDiffCategorySameDay() {
-        return await this.request( {endpoint: "user/getTwoItemsDiffCategorySameDay", method: "GET"} )
+    async getTwoItemsDiffCategorySameDay(category1, category2) {
+        return await this.request( {endpoint: `user/getTwoItemsDiffCategorySameDay/${category1}/${category2}`, method: "GET"} )
     }
 
     // 3
