@@ -26,7 +26,7 @@ export default function Reviews() {
                 <tr>
                     <th>Number</th>
                     <th>User</th>
-                    <th>Item</th>
+                    <th>Item Reviewed</th>
                     <th>Price</th>
                     <th>Rating</th>
                     <th>Review Description</th>
